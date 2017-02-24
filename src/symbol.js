@@ -5,7 +5,12 @@ let counter = 0;
 
 export function gensym(name: string) {
   let prefix = name == null ? 's_' : name + '_';
-  let sym = new Symbol(prefix + counter);
+  let sym;
+  if (name == null) {
+    sym = new Symbol(prefix + counter);
+  } else {
+    sym = new Symbol(name);
+  }
   counter++;
   return sym;
 }
